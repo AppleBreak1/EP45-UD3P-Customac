@@ -1,6 +1,6 @@
 # Introduction
 
-This build is from 2008 that's turned into Hackintosh since the release of Snow Leopard. It's been nearly 13 years. Sure, I've done some maintenance here and there like RAM, Graphics, and SSD over those years but the system has been rock solid for many years and have become one of my favorite toy. It is still capable of running up to macOS Monterey thanks to those involved in making old hardware to run in uptodate macOS. However, with the release of macOS Ventura, we might witness the last nail in the coffin.     
+This build is from 2008 that's turned into Hackintosh since the release of Snow Leopard. It's been nearly 13 years. Sure, I've done some maintenance here and there like RAM, Graphics Card, and SSD over those years but the system has been rock solid for many years and have become one of my favorite toy. It is still capable of running up to macOS Monterey thanks to those involved in making old hardware to run in uptodate macOS. However, with the release of macOS Ventura, we might witness the last nail in the coffin.     
 
 # EP45-UD3P-OPENCORE
 
