@@ -71,7 +71,7 @@ Init Display First -> PEG
 
 ICH SATA Control Mode -> AHCI (Required)
 
-Onboard H/W 1394 -> Disabled (May cause sleep issue if enabled. However, patch has been applied to DSDT to resolve the issue)
+Onboard H/W 1394 -> Disabled (May cause sleep issue if enabled, but the fix has been applied to DSDT)
 
 Onboard SATA/IDE Device -> Disabled (Better to disable if not used. It will only slow down posting otherwise)
 
