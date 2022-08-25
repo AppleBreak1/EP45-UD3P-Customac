@@ -71,7 +71,7 @@ Init Display First -> PEG
 
 ICH SATA Control Mode -> AHCI (Required)
 
-Onboard H/W 1394 -> Disabled
+Onboard H/W 1394 -> Disabled (May cause sleep issue if enabled. However, patch has been applied to DSDT to resolve the issue)
 
 Onboard SATA/IDE Device -> Disabled (Better to disable if not used. It will only slow down posting otherwise)
 
@@ -202,7 +202,7 @@ DSDT Fixes:
 
 - Various device renames
 
-- Added SBUS and missing device such as PEG0, PEG1
+- Added SBUS and missing device such as PEG0, PEG1, FRWR.
 
 - LPC device-id injection (To load AppleLPC)
 
