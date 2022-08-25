@@ -7,7 +7,7 @@ Minimal patching via SSDT for OpenCore (No fully patched DSDT Needed)
 3. SSDT-LPC: AppleLPC device-id
 4. SSDT-IRQS: Fix for HPET, RTC, IPIC, TIMR.  (Required)
 5. SSDT-Device: Add missing devices; Remove unused devices.
-   - Added FRWR device with _SUN method to fix sleep issue when 1394 is enabled
+   - Added FRWR device with _SUN object to fix sleep issue when 1394 is enabled
 6. SSDT-EC-USBS: Add Embedded Controller. (Required)
 7. SSDT-PTS: Fixes reboot issue when waking up from sleep. (Required)
 
