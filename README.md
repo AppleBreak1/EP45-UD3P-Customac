@@ -175,7 +175,7 @@ UsbMouseDxe.efi
 
 **Big Sur:**
 
-- Beginning with Big Sur, offline macOS installation requires functioning NVRAM. Easiest way to jump over this hurdle is to install using [Recovery Online installation Method]( https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install-recovery.html) Note that this method requires internet connection.
+- Beginning with Big Sur, offline macOS installation requires functioning NVRAM. Easiest way to jump over this hurdle is to install using [Recovery Online installation Method]( https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install-recovery.html). Note that this method requires internet connection.
 
 - HID devices(USB Keyboard or Mouse) may not function. IOHIDFamily.Kext patch may be needed.
 
@@ -216,7 +216,7 @@ Intel SpeedStep:
   
 - Alternative method is to use Clover generated CpuPm and CpuCst SSDTs.  However, I find using method described in the link above results in a better CPU temperature.
 
-- If you want to have speedstep working but are not confortable with either method described, You may use Clover Bootloader.
+- If you want to have speedstep working but are not comfortable with either method described, You may use Clover Bootloader.
 
 Q9550 @3.2GHz
 <img width="1875" alt="Mojave-min" src="https://user-images.githubusercontent.com/97265013/181845167-ad13f857-598d-4ca2-ac8b-5512976e1da9.png">
