@@ -9,7 +9,7 @@
 4. You can create custom entry for Proboot volume. Provide following information to create custom entry.
 
    - Volume: Taget Preboot partition disk UUID
-   - Path: \UUID\System\Library\CoreServices\Boot.efi (You will need to mount preboot volume to find out UUID folder).
+   - Path: \UUID\System\Library\CoreServices\Boot.efi (You will need to mount preboot volume to find out the UUID of UUID folder).
 
 5. Generate your own SMBIOS.
 
