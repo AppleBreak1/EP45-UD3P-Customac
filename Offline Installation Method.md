@@ -1,11 +1,11 @@
-Due to having no NVRAM on this old legacy board, installing macOS Big Sur or later using offline method will result in an infinite boot loop as the system fails to write NVRAM parameter msu-product-url the “UUID of target partition created by macOS installer” to NVRAM.  The key here is the UUID of the target partition. As long as the UUID of the target partition is written in the NVRAM section of the config.plist before proceeding to second stage of installation, boot loop issue should be resolved.
+Due to having no NVRAM on this old legacy board, installing macOS Big Sur or later using the offline method will result in an infinite boot loop as the system fails to write NVRAM parameter msu-product-url the “UUID of target partition created by macOS installer” to NVRAM.  The key here is the UUID of the target partition. As long as the UUID of the target partition is written in the NVRAM section of the config.plist before proceeding to second stage of installation, boot loop issue should be resolved.
 
 # Installation Process
 
 Assuming the target partition’s name is “Monterey”
 
 
-1. Wether you are installing from an Installer USB or from an another working macOS partition in your system. ‘DO NOT” boot to newly created “macOS Installer” entry after the first stage of installation. Instead, boot back into Installer USB or other working macOS partition to get the UUID of target partition. 
+1. Whether you are installing from an Installer USB or from an another working macOS partition in your system. ‘DO NOT” boot to newly created “macOS Installer” entry after the first stage of installation. Instead, boot back into Installer USB or other working macOS partition to get the UUID of target partition. 
 
 2. To find UUID of Monterey(Target Partition) open the Terminal app and execute the following command.
 
