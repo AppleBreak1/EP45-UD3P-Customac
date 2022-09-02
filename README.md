@@ -175,7 +175,7 @@ UsbMouseDxe.efi
 
 **Big Sur:**
 
-- Beginning with Big Sur, offline macOS installation requires functioning NVRAM. Easiest way to jump over this hurdle is to install using [Recovery Online installation Method]( https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install-recovery.html). Note that this method requires internet connection.
+- Beginning with Big Sur, offline macOS installation requires functioning NVRAM. Easiest way to jump over this hurdle is to install using [Recovery Online installation Method]( https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install-recovery.html). Note that this method requires internet connection.  For offline installation, refer to this [guide](https://github.com/AppleBreak1/EP45-UD3P-Customac/blob/main/Offline%20Installation%20Method.md).
 
 - HID devices(USB Keyboard or Mouse) may not function. IOHIDFamily.Kext patch may be needed.
 
