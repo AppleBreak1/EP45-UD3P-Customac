@@ -821,7 +821,7 @@
 				<key>Arguments</key>
 				<string></string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>Path</key>
 				<string>ApfsDriverLoader.efi</string>
 			</dict>
