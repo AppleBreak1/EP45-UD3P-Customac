@@ -1,6 +1,6 @@
 # EP45-UD3P Clover v.5149
 
-![screenshot](https://user-images.githubusercontent.com/97265013/187798031-e290b2e5-ce7a-4590-9470-9010d7f364ec.png)
+![screenshot0](https://user-images.githubusercontent.com/97265013/188255773-b47a0a25-a6b7-4fef-951d-a915d6599086.png)
 
 
 1. Uses fully patched DSDT
