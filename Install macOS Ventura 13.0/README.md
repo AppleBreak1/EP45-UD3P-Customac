@@ -1,5 +1,7 @@
 # macOS 13.0 Ventura
 
+<img width="1435" alt="Screenshot 2022-10-30 at 6 51 44 PM" src="https://user-images.githubusercontent.com/97265013/198927966-1b2d5852-6d9b-4043-add1-8e9c5b3d51c4.png">
+
 Big thanks to OCLP developers, we are now able to install macOS 13.0 on old hardwares such as core2quad(SSE4.1) with some workarounds.
 
 Please ["READ HERE"](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/998) before attempting to install macOS Ventura.
