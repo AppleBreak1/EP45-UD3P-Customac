@@ -31,7 +31,7 @@ Please ["READ HERE"](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/
 - PS2 Keyboard/Mouse or PCIE USB 3.0 Expansion Card (UHCI USB Stack have been dropped in macOS Ventura thus USB Keyboard/Mouse won't work if plugged into any onboard USB ports)
 
 
-# Install EFI
+# Install EFI - OC 0.8.5
 
 [EFI-Installation.zip](https://github.com/AppleBreak1/EP45-UD3P-Customac/files/9897890/EFI-Installation.zip)
 
@@ -40,11 +40,11 @@ Please ["READ HERE"](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/
 - Make a backup before attempting to install or install on separate disk
 
 
-# Post-Install EFI
+# Post-Install EFI - OC 0.8.5
 
 [EFI-Post Installation.zip](https://github.com/AppleBreak1/EP45-UD3P-Customac/files/9897891/EFI-Post.Installation.zip)
 
 
 - Fill in SMBIOS iMac10,1 information
-- Use latest OCLP to get GPU acceleration.
+- Use latest OCLP to get GPU acceleration
 
