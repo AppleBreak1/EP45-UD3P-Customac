@@ -27,7 +27,7 @@ Please ["READ HERE"](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/
 
 - Boot-args: keepsyms=1, amfi_get_out_of_my_way=1 (is needed for various root patching (GPU) via OCLP 0.5.0 or higher)
 
-- PS2 Keyboard/Mouse or PCIE USB 3.0 Expansion Card (UHCI USB Stack have been dropped in macOS Ventura thus USB Keyboard/Mouse won't work if plugged into any onboard USB ports)
+- PS2 Keyboard/Mouse or PCIE USB 3.0 Expansion Card (UHCI USB Stack have been dropped in macOS Ventura thus USB Keyboard/Mouse won't work if plugged into any of the onboard USB ports)
 
 
 # Install EFI - OC 0.8.5
