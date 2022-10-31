@@ -12,7 +12,7 @@ Please ["READ HERE"](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/
 
 - Minimum of OC 0.8.3 with latest version of kexts
 
-- iMacPro1,1 (For installation purpose)
+- Use SMBIOS iMacPro1,1 (For installation purpose)
 
 - [Rosetta Cryptex](https://github.com/acidanthera/CryptexFixup) (Can be installed by using CryptexFixup.kext. However, if this doesn't work, it will have to be done [manually](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/998#issuecomment-1163607808))
 - [NoAVXFSCompressionTypeZlib-AVXpel.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/blob/67a78ec4a275e0e8f8941a5ff9d64f00c28397dc/payloads/Kexts/Misc/NoAVXFSCompressionTypeZlib-v12.3.1.zip)
