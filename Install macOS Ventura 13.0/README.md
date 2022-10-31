@@ -25,7 +25,7 @@ Please ["READ HERE"](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/
 
 - Kernel patch to [disable Root Hash validation](https://github.com/dortania/OpenCore-Legacy-Patcher/commit/03b8b4655041cccb6b099020265c4fcb9c297dc6#diff-e6e31b873ed817965dd126ab9dd4ff17d91e0b0ed49dc87f1ecd0c89bebd9a1dR1688-R1717) 
 
-- Boot-args: keepsyms=1, amfi_get_out_of_my_way=1 (is needed for various root patching (GPU) via OCLP 0.5.0 or higher)
+- Boot-args: keepsyms=1, amfi_get_out_of_my_way=1 (is needed for various root patching (GPU) via [OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher) 0.5.0 or higher)
 
 - PS2 Keyboard/Mouse or PCIE USB 3.0 Expansion Card (UHCI USB Stack have been dropped in macOS Ventura thus USB Keyboard/Mouse won't work if plugged into any of the onboard USB ports)
 
@@ -47,5 +47,5 @@ Please ["READ HERE"](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/
 
 
 - Fill in SMBIOS iMac10,1 information
-- Use latest OCLP to get GPU acceleration
+- Use the latest [OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher) to get GPU acceleration
 
