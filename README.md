@@ -1,6 +1,6 @@
 # Introduction
 
-This build is from 2008 that's turned into a Hackintosh since the release of Snow Leopard. It's been nearly 13 years. Sure, I've done some maintenance here and there like the RAMs, Graphics card, and the SSDs over those years but the system has been rock solid for many years and have become one of my favorite toy. It is still capable of running up to macOS Monterey thanks to those involved in making old hardware to run in uptodate macOS. However, with the release of macOS Ventura, we might witness the last nail in the coffin.     
+This build is from 2008 that's turned into a Hackintosh since the release of Snow Leopard. It's been nearly 13 years. Sure, I've done some maintenance here and there like the RAMs, Graphics card, and the SSDs over those years but the system has been rock solid for many years and have become one of my favorite toy. It is still capable of running up to macOS Monterey thanks to those involved in making old hardware to run in uptodate macOS. ~~However, with the release of macOS Ventura, we might witness the last nail in the coffin.~~ [Install macOS Ventura 13.0](https://github.com/AppleBreak1/EP45-UD3P-Customac/blob/main/Install%20macOS%20Ventura%2013.0/README.md)     
 
 # EP45-UD3P-OPENCORE
 
