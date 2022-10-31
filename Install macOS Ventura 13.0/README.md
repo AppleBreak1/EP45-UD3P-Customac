@@ -33,7 +33,8 @@ Please ["READ HERE"](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/
 
 # Install EFI - OC 0.8.5
 
-[EFI-Installation.zip](https://github.com/AppleBreak1/EP45-UD3P-Customac/files/9897890/EFI-Installation.zip)
+[EFI-Installation.zip](https://github.com/AppleBreak1/EP45-UD3P-Customac/files/9898174/EFI-Installation.zip)
+
 
 
 - Fill in SMBIOS iMacPro1,1 information
@@ -42,7 +43,8 @@ Please ["READ HERE"](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/
 
 # Post-Install EFI - OC 0.8.5
 
-[EFI-Post Installation.zip](https://github.com/AppleBreak1/EP45-UD3P-Customac/files/9897891/EFI-Post.Installation.zip)
+
+[EFI-Post Installation.zip](https://github.com/AppleBreak1/EP45-UD3P-Customac/files/9898176/EFI-Post.Installation.zip)
 
 
 - Fill in SMBIOS iMac10,1 information
