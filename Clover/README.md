@@ -9,7 +9,7 @@
 
 3. Beginning with Big Sur, can only boot via Preboot volume.
 
-4. You can create custom entry for Proboot volume. Provide following information to create custom entry.
+4. You can create custom entry for Preboot volume. Provide following information to create custom entry.
 
    - Volume: Taget Preboot partition disk UUID
    - Path: \UUID\System\Library\CoreServices\Boot.efi (You will need to mount preboot volume to find out the UUID of UUID folder).
@@ -19,5 +19,8 @@
 6. For macOS Big Sur or Monterey installation, Use SMBIOS iMacPro1,1 (Use with AppleMCEReporterDisabler.kext in OFF folder)
 
 7. Post installation 
-    - Use ASPP-Override.kext only in macOS Monterey 12.3 or higher (Not be be used for installation purpose)
+    - Use ASPP-Override.kext only in macOS Monterey 12.3 or higher (Not to be used for installation purpose)
     - Change SMBIOS back to iMac10,1
+
+
+Note: This EFI will work upto macOS Monterey.
