@@ -19,6 +19,8 @@ BIOS revision: F10
 
 Wifi/BT Card: Fenvi FV-T919
 
+PCIe Card: Inateck KT5001 USB 3.0 PCIe Card
+
 WebCam: Logitech C920
 
 SSD: PNY CS900 250GB (macOS Mojave)
