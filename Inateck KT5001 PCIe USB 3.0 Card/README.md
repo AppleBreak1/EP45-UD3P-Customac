@@ -6,7 +6,7 @@ Inateck KT5001 PCIE USB 3.0 card (Fresco Logic FL1100 chipset) works out of the 
 
 - Sleep issue while USB 3.0 external HDDs are connected to PCIE USB ports. When attempting to sleep, the system would enter into an infinite sleep/wake cycle by itself and has to hard shut down manually to get out of it. 
 
-The sleep issue can be resolved by mapping USB ports and setting correct USB connector type to each port but not being able to use Keyboard to access BIOS menu while system is posting is somewhat inconvenient.
+The sleep issue can be resolved by mapping USB ports and setting correct USB connector type to each port but not being able to use keyboard to access BIOS menu while system is posting is somewhat inconvenient.
 
 
 # USB Port Mapping
