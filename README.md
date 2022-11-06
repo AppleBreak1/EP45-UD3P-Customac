@@ -166,7 +166,7 @@ UsbMouseDxe.efi
 
 **Snow Leopard ~ High Sierra:** 
 
-- System is natively supported and works without any tweaks
+- System is natively supported and works without any tweaks.
 
 **Mojave ~ Catalina:** 
 
@@ -183,9 +183,9 @@ UsbMouseDxe.efi
 
 **Monterey 12.3.0**
 
-- Beginning with macOS 12.3.0 Apple [dropped plugin-type check and no longer match on to ACPI_SMC_PlatformPlugin](https://github.com/dortania/OpenCore-Legacy-Patcher/commit/f7f890d37e01b79d0926824ac424da897762431b#diff-802c4227abfb4a7ca54531b779674b82304a7d0b5e599f10ae5b91c1eea0fdbc) resulting in improper CPU PowerManagement for Pre-SandBridge CPUs.  [ASPP-Override.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/blob/main/payloads/Kexts/Misc/ASPP-Override-v1.0.1.zip) is required to resolve this issue. (For update or installation of macOS do not use this kext as it can lead to kernel panic. Use it once the installation or the update is complete)
+- Beginning with macOS 12.3.0, Apple [dropped plugin-type check and no longer match on to ACPI_SMC_PlatformPlugin](https://github.com/dortania/OpenCore-Legacy-Patcher/commit/f7f890d37e01b79d0926824ac424da897762431b#diff-802c4227abfb4a7ca54531b779674b82304a7d0b5e599f10ae5b91c1eea0fdbc) resulting in improper CPU PowerManagement for Pre-SandBridge CPUs.  [ASPP-Override.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/blob/main/payloads/Kexts/Misc/ASPP-Override-v1.0.1.zip) is required to resolve this issue. (For update or installation of macOS, do not use this kext as it can lead to kernel panic. Use it once the installation or the update is complete)
 
-- Using iMacPro1,1 SMBIOS may require AppleMCEReporterDisabler.kext
+- Using iMacPro1,1 SMBIOS may require AppleMCEReporterDisabler.kext.
 
 - In macOS Monterey, GTX 770 or Kepler Variant Cards require [Kepler Patcher](https://github.com/chris1111/Geforce-Kepler-patcher) to get hardware acceleration.
 
@@ -228,7 +228,7 @@ Q9550 @4.0GHz
 
 Pairing with AMD RX 580:
 
-- Core2Quad CPUs are not capable of decoding 4K HEVC format videos. It will most likely stutter and become unwatchable. However, with RX 460 ~ RX 590 being able to decode 4K HEVC it can breath more life into such an old system
+- Core2Quad CPUs are not capable of decoding 4K HEVC format videos. It will most likely stutter and become unwatchable. However, with RX 460 ~ RX 590 being able to decode 4K HEVC, it can breath more life into such an old system.
 
   Requirements:
 
