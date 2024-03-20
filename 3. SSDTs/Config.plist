@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ACPI</key>
+	<dict>
+		<key>Add</key>
+		<array>
+			<dict>
+				<key>Comment</key>
+				<string>Q9550 PState; make sure OEM table is dropped</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-CPUPM.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Q9550 CState; make dure OEM table is dropped</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-CPUCST.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Patch to fix crash on sleep/wake and hangs on shutdown; make sure to rename _PTS</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-PTS.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>IRQ conflict fix; RTC fix; HPET fix. HPET fix required to avoid kernel panic or crash; alternatively, enable DummyPowerManagement</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-IRQS.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>AppleLPC required for proper power management.</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-LPC.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Injects fake devices; defines missing pci-bridges in DSDT; disables unused devices</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-Devices.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>EP45-UD3P USB map</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-USBP.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Fix for USB 2.0 Power</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-EHCI.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Embedded Controller + USBX for USB power properties to allow high power charging of iPad and other idevices.</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-EC-USBX.aml</string>
+			</dict>
+		</array>
+		<key>Patch</key>
+		<array>
+			<dict>
+				<key>Base</key>
+				<string></string>
+				<key>BaseSkip</key>
+				<integer>0</integer>
+				<key>Comment</key>
+				<string>Rename _PTS to ZPTS; required to inject SSDT-PTS.aml to fix shutdown hangs and restart on sleep/wake</string>
+				<key>Count</key>
+				<integer>1</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				X1BUUw==
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				</data>
+				<key>Replace</key>
+				<data>
+				WlBUUw==
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				RFNEVA==
+				</data>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>
