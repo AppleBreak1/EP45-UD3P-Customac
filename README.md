@@ -2,8 +2,7 @@
 
 This build is from 2008 that's turned into a Hackintosh since the release of Snow Leopard. I've done some maintenance here and there like the RAMs, Graphics cards, and the SSDs over those years but the system has been rock solid and have become one of my favorite toy. It is still capable of running up to macOS Sequoia thanks to those involved in making this run possible. 
 
-![BootPicker](https://github.com/AppleBreak1/EP45-UD3P-Customac/assets/97265013/0aad9cf7-8eb7-4c5a-9b29-3a0d6f83cb36)
-
+<img width="1920" height="1080" alt="Intro" src="https://github.com/user-attachments/assets/b21c542c-4df7-49f5-9bf3-5908be5df3aa" />
 
 # Specs
 
