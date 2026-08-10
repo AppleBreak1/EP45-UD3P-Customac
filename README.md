@@ -1,6 +1,6 @@
 # Introduction
 
-This build is from 2008 that's turned into a Hackintosh since the release of Snow Leopard. I've done some maintenance here and there like the RAMs, Graphics cards, and the SSDs over those years but the system has been rock solid and have become one of my favorite toy. It is still capable of running up to macOS Sonoma thanks to those involved in making old hardware to run in up-to-date macOS. 
+This build is from 2008 that's turned into a Hackintosh since the release of Snow Leopard. I've done some maintenance here and there like the RAMs, Graphics cards, and the SSDs over those years but the system has been rock solid and have become one of my favorite toy. It is still capable of running up to macOS Sequoia thanks to those involved in making this run possible. 
 
 ![BootPicker](https://github.com/AppleBreak1/EP45-UD3P-Customac/assets/97265013/0aad9cf7-8eb7-4c5a-9b29-3a0d6f83cb36)
 
@@ -8,6 +8,8 @@ This build is from 2008 that's turned into a Hackintosh since the release of Sno
 # Specs
 
 CPU : Intel Core 2 Quad Q9550 @4.0GHz
+
+GPU: Sapphire RX 580 Nitro+ SE 8GB (Sierra - Tahoe; patch required for Ventura+ on non-AVX2.0 system)
 
 GPU: EVGA GeForce GTX 770 2GB (Mountain Lion - Big Sur; patch required for Monterey+)
 
@@ -29,7 +31,7 @@ WebCam: Logitech C920
 
 SSD: PNY CS900 250GB (macOS Mojave)
 
-SSD: PNY CS900 250GB (macOS Catalina, Big Sur, Monterey, Ventura, Sonoma)
+SSD: PNY CS900 250GB (macOS Catalina, Big Sur, Monterey, Ventura, Sonoma, Sequoia, Tahoe)
 
 SSD: PNY CS900 250GB (Windows 11)
 
@@ -40,6 +42,8 @@ Native CPU Power Management (AppleLPC, AppleHPET, SpeedStep)
 Q9550 SpeedStep (Requires [patch](https://github.com/AppleBreak1/EP45-UD3P-Customac/blob/main/7.%20Miscellaneous/Misc.md) or emulate DummyPowerManagement)
 
 GPU Power Management ([AGPM Injector](https://github.com/Pavo-IM/AGPMInjector))
+
+Hardware Encoding/Decoding/DRM (If paired with capable AMD dGPU)
 
 Restart/Sleep/Shutdown (Requires _PTS patch to fix shutdown and restart on wake)
 
@@ -53,11 +57,11 @@ AirplaytoMac / Universal Control (Requires natively supported WiFi/BT card such 
 
 Smooth 1440P VP9 Youtube Video playback
 
-Mac OS: Tiger ~ macOS Sonoma (Installable)
+Mac OS: OS X Tiger ~ macOS Tahoe (Installable)
 
-# Not Working
+# Not Working 
 
-DRM in Safari and TV+ (Workaround is to use iMacPro1,1 SMBIOS and pair with AMD Polaris GPUs which require injecting [MouSSE](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/)(SSE4.2 Emulator) for CPUs with no SSE 4.2 support) 
+No support of hardware-based DRM in Safari and Apple TV when paired with NVDIA dGPU (Workaround is to use iMacPro1,1 SMBIOS and pair with AMD Polaris GPUs which require injecting [MouSSE](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/)(SSE4.2 Emulator) for non-SSE4.2 system) 
 
 # BIOS Settings
 
@@ -120,7 +124,7 @@ Note: Three important settings are AHCI, HPET 64-bit mode, and disabling Quick B
 
 **Mojave ~ Catalina:** 
 
-- Beginning with Mojave, SSE4.2 is required. However, this is not supported by Core2Quad or Core2Duo and is prevented from booting Mojave+. To bypass this, use [telematrap](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707) kext to block com.apple.telemetry.plugin in S/L/UserEventPlugins.
+- Beginning with Mojave, SSE4.2 is required. However, this is not supported by the Intel Core2 family processors and is prevented from booting Mojave+ on non-SSE4.2 system. To bypass this, use [telematrap](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707) kext to block com.apple.telemetry.plugin in S/L/UserEventPlugins.
 
 - Apple dropped support for iMac10,1 in macOS Mojave+. For update or installation purpose, use iMacPro1,1 SMBIOS. Once the installation is complete, revert back to iMac10,1 SMBIOS and add boot-arg -no_compat_check.
       
@@ -128,7 +132,7 @@ Note: Three important settings are AHCI, HPET 64-bit mode, and disabling Quick B
 
 - For Big Sur, offline macOS installation requires functioning NVRAM. Easiest way to jump over this hurdle is to install using [Online Method]( https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install-recovery.html). Note that this method requires internet connection.  For offline installation, refer to this [guide](https://github.com/AppleBreak1/EP45-UD3P-Customac/blob/main/7.%20Miscellaneous/Offline%20Installation%20Method%20for%20Big%20Sur.md).
 
-- HID devices(USB Keyboard or Mouse) may not function. IOHIDFamily.Kext patch may be needed.
+- HID devices(USB Keyboard or Mouse) connected to onboard USB may not function due to borked UHCI. IOHIDFamily.Kext [patch](https://applelife.ru/threads/ustanovka-macos-big-sur-11-0-beta-na-intel-pc-old.2944999/page-81#post-884400)(single-user mode) may be needed.
   
 - For random hangs on boot, [SurPlus patch](https://github.com/reenigneorcim/SurPlus) may be necessary to resolve the issue.
 
@@ -147,7 +151,7 @@ Note: Three important settings are AHCI, HPET 64-bit mode, and disabling Quick B
 
     Note: If for any reason installer did not install Rosetta Cryptex, it can also be done [manually](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/998#issuecomment-1163607808). Extract, rename, copy, and paste os.dmg file to /Volumes/Preboot/UUID/Cryptex1/Current of the target partition.
 
-- Core2Quad or Core2Duo CPUs that support SSE4.1 require injecting [AAAMouSSE.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/blob/main/payloads/Kexts/SSE/AAAMouSSE-v0.95-Dortania.zip) and [NoAVXFSCompressionTypeZlib-AVXpel.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/commits/67a78ec4a275e0e8f8941a5ff9d64f00c28397dc/payloads/Kexts/Misc/NoAVXFSCompressionTypeZlib-v12.3.1.zip) to avoid kernel panic in Ventura+.
+- non-SSE4.2 systems with SSE4.1 support require injecting [AAAMouSSE.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/blob/main/payloads/Kexts/SSE/AAAMouSSE-v0.95-Dortania.zip) and [NoAVXFSCompressionTypeZlib-AVXpel.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/commits/67a78ec4a275e0e8f8941a5ff9d64f00c28397dc/payloads/Kexts/Misc/NoAVXFSCompressionTypeZlib-v12.3.1.zip) to avoid kernel panic in Ventura+.
       
 - UHCI/OHCI USB stack is removed from Ventura+. UHCI/OHCI is a USB1.1 controller where the USB keyboard/mouse get attached to for legacy systems. USB keyboard/mouse will not work in Ventura installer if they are plugged into any of the onboard USB ports. To install Ventura+ on this legacy system, use of PS2 keyboard/mouse or USB 2.0 Hub/PCIE USB 3.0 expansion card to force the keyboard/mouse be controlled by EHCI(USB2.0 controller) is required.
 
@@ -160,6 +164,14 @@ Note: Three important settings are AHCI, HPET 64-bit mode, and disabling Quick B
 - No additional requirements to install macOS Sonoma 14.0 for this hack on top of Ventura installation requirements. However, Apple did drop support for many Broadcom Wi-Fi modules in macOS Sonoma. For systems with these modules, please refer to this [note](https://github.com/AppleBreak1/EP45-UD3P-Customac/blob/main/2.%20OpenCore/4-4%20Sonoma/README.md#notes).
 
 - Injecting AppleUSBUHCI.kext and AppleUSBUHCIPCI.kext to bring back USB1.1 functionality causes kernel panic in Sonoma 14.1+; thus, set MaxKernel to 23.0. The [OCLP 1.1.0n+](https://github.com/dortania/OpenCore-Legacy-Patcher/tree/d83f8ee38158c5b593361e7e15ab4707e7f48f21) applies USB1.1 patch directly to on-disk binaries for Sonoma 14.1+ as explained [here](https://github.com/dortania/OpenCore-Legacy-Patcher/commit/af575965599043e59b713f266f61ddb194a0e57c).
+
+**Sequoia**
+
+- Fixing the out-of-order Local Apic ID sequence in APIC table may be necessary to resolve a CPU panic when booting to macOS Sequoia, which may not have been an issue up through macOS Sonoma.
+
+**Tahoe**
+
+- While macOS Tahoe can be installed on this system, it is unusable without graphics acceleration and no graphics patches have been released for macOS Tahoe as of yet. For more details about changes in macOS Tahoe, please refer to [here](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/1167)
 
 # Misc
 
@@ -206,13 +218,15 @@ Q9550 @4.0GHz
 
 Pairing with AMD RX 580:
 
-- Core2Quad CPUs are not capable of decoding 4K HEVC format videos. It will most likely stutter and become unwatchable. However, with the RX 460 ~ RX 590 being able to decode 4K HEVC, it can breathe more life into such an old system when paired.
+- The Intel Core2 family CPUs lack enough raw power to decode 4K H265 format videos. Software playback with these CPUs will result in severe stuttering. However, with the RX 460 ~ RX 590 being able to decode 4K HEVC, it can breathe more life into such an old system when paired. 
 
   Requirements:
 
   -Must be on macOS Mojave 10.4.4 or higher (For hardware decoding capability)
   
-  -[Mousse](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/) (This partial SSE4.2 emulator is required as macOS AMD metal driver asks for SSE4.2 since High Sierra otherwise drivers will not load results in a black screen) 
+  -[Mousse](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/) (On non-SSE4.2 systems with SSE4.1 support, this partial SSE4.2 emulator is required as macOS AMD metal drivers call for SSE4.2 instruction set since High Sierra, otherwise, drivers will not load which will result in black screen)
+
+- More about [pairing AMD GPU with non-SSE4.2 system](https://github.com/AppleBreak1/Sapphire-Rx-580-Nitro-S.E./blob/main/Pairing%20with%20Old%20Processors.md)  
 
 # GeekBench
 <img width="1198" alt="geekbench" src="https://user-images.githubusercontent.com/97265013/181845217-1af38543-cfc5-4383-b9d2-5e28dd2d0fb9.png">

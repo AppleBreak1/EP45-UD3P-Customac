@@ -1,11 +1,11 @@
 # All-In-One EFI
 
 - This EFI adapts use of SSDT hotpatch instead of opting for patched DSDT.
-- Combines required OpenCore settings and kexts used to boot Tiger to Sonoma
+- Combines required OpenCore settings and kexts to boot Tiger through Tahoe
 
 # OpenCore
 
-- Version: 0.9.5
+- Version: 1.0.7
   
 - SMC Emulator
 
@@ -16,18 +16,27 @@
        Note: If there is an issue installing macOS with FakeSMC and Plugins, use VirtualSMC for installation purpose)
       
 - SSDT
+  
+     - SSDT-APIC (Patch to reorder Local Apic ID; necessary for booting Sequoia+)
+       
      - SSDT-CPUPM (P-States for Q9550; disabled)
+       
      - SSDT-CPUCST (C-States for Q9550; disabled)
+       
      - SSDT-Devices (Defines missing pci-bridges and devices in DSDT and disables unused devices in Mac OS)
+       
      - SSDT-EC
+       
        - EC: Fake Embedded Controller
-       - USBX: Injects USB power properties (This allows for high power charging of iPad and other iDevices via USB 2.0; however, USBX is not necessary if USB port mapping is already done with [Hackintool](https://github.com/benbaker76/Hackintool))     
+       - USBX: Injects USB power properties (This allows for high power charging of iPad and other iDevices via USB 2.0; however, USBX is not necessary if USB port mapping is already done with [Hackintool](https://github.com/benbaker76/Hackintool))
+            
      - SSDT-IRQS (IRQ conflict fix, HPET fix, otherwise DummyPowerManagement is required)
 
             Note that in Ventura+, kernel panic or crash may still occur with DummyPowerManagment enabled
             which seems to be broken (HPET fix is recommended)
        
      - SSDT-PTS (Fixes shutdown and reboot on sleep/wake)
+       
      - SSDT-EHCI (Fix for USB2.0 power)
 
         - Allows USB2.0 hub connected devices to wake the system
@@ -55,7 +64,7 @@
        
 # Notes
 
-- Bootable Mac OS versions: Mac OS X Tiger 10.4.10 ~ macOS Sonoma 14.0 Beta
+- Tested bootable Mac OS versions: Mac OS X Tiger 10.4.10 ~ macOS Tahoe 26.2
   
 - For installations, SMBIOS needs to be changed accordingly.
 
@@ -64,7 +73,9 @@
   - iMac7,1: Tiger ~ El Capitan
   - iMac9,1: Leopard ~ El Capitan
   - iMac10,1: Leopard ~ High Sierra
-  - iMac19,1: Mojave+
+  - iMac19,1: Mojave ~ Sequoia
+  - iMac20,1: Catalina ~ Tahoe
+  - VMM-x86_64(Spoof): Big Sur 11.2.3 or newer
 
 - Notes on SMBIOS suitabililty for this system.
 
@@ -74,11 +85,19 @@
 
   - MacPro3,1: Allows proper CPU SpeedStep (If configured). However, no AGPM exists for MacPro3,1 or older MacPros.
      
-- When using unsupported GPUs in versions of Mac OS, it may require adding nv_disable=1 (Nvidia) or -radvesa (AMD) to force VESA mode to avoid black screen. 
+- When using unsupported GPUs in versions of Mac OS, it may require adding nv_disable=1 (Nvidia) or -amd_no_dgpu_accel (AMD) or -radvesa (AMD) to force VESA mode to avoid black screen. 
   
-- No device renaming. Although this can be done via ACPI patch section of the Config.plist, this may require changing path/names in SSDTs accordingly.
+- No device renaming. Although this can be done via ACPI patch section of the config.plist, this may require changing path/names in SSDTs accordingly.
+
+- macOS Tahoe is bootable on this system, but it is not usable without the graphics acceleration patches.
 
 # Screenshots
 <details> 
 <summary>Sonoma</summary><img width="1121" alt="Screenshot 2023-07-03 at 5 07 19 PM" src="https://github.com/AppleBreak1/EP45-UD3P-Customac/assets/97265013/1b3cefcf-e46c-4f9d-9fe9-1fd92b7f7227">
+</details>  
+<details> 
+<summary>Sequoia</summary>
+</details>  
+<details> 
+<summary>Tahoe</summary>
 </details>  

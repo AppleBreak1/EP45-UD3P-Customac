@@ -16,6 +16,7 @@
 - [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/4-2%20Monterey) for Monterey
 - [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/4-3%20Ventura) for Ventura
 - [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/4-4%20Sonoma) for Sonoma
+- [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/4-5%20Sequoia) for Sequoia
 - [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/All-In-One-EFI) All-In-One
 # OpenCore for Legacy BIOS
 Must install DuetPkg to EFI partition of Installer USB or macOS disk following the [guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install.html#legacy-setup)
@@ -24,13 +25,69 @@ Must install DuetPkg to EFI partition of Installer USB or macOS disk following t
 
 - ACPI
 
-    ADD: DSDT.aml, SSDT-EC-USBX.aml
+  Add:
 
-    Quirks: FadtEnableReset -> Yes (This is required for restart to function properly)
+     - DSDT.aml ([Patched DSDT](https://github.com/AppleBreak1/EP45-UD3P-Customac#misc))
+     
+       *  You may opt to use SSDT hotpatch-only approach
+       
+     - SSDT-APIC.aml (Fixes out-of-order Local Apic ID)
+       
+       * Make sure to drop the OEM APIC table
+
+     - SSDT-CPUPM.aml: P-States for Q9550
+       
+     - SSDT-CPUCST.aml: C-States for Q9550
+       
+       * Make sure to drop the OEM cpupm table and cpucst tables (If C1E/C2/C4/CPU EIST is enabled in BIOS)
+         
+     - SSDT-LPC.aml: Injects fake LPC properties to load AppleLPC (For power management)
+     
+       - Can also be injected via DeviceProperty method
+       
+     - SSDT-IRQS: Fix HPET and RTC; fix IRQ conflicts
+       
+       * Modifying HPET._STA and HPET._CRS are nessessary to load AppleHPET.kext. This will avoid kernel panic when loading AppleIntelCPUPowerManagement. (Otherwise, DummyPowerManagement needs to be enabled)
+         
+     - SSDT-Device: Defines missing pci-bridges and devices; Injects fake devices; disables unused devices.
+       
+       - Added FRWR device with _SUN object to fix sleep issue when 1394 is enabled
+     
+     - SSDT-EC-USBX:
+       
+       - EC: Fake Embedded Controller
+       - USBX: Injects USB power properties (This allows for high power charging of iPhone, iPad and etc via USB 2.0; however, USBX is not necessary if USB port mapping is already done with Hackintool)
+         
+     - SSDT-EHCI: Fix for USB2.0 power
+
+       - Allows USB2.0 hub connected devices to wake the system
+       - Allows single-key press or a mouse click to fully wake the system (For Catalina and older, darkwake=0 may still be needed)
+       - Resolves "Disk not ejected properly" notification on wake when USB disks are connected to the system
+       - Resolves USB keyboard/mouse not working after sleep/wake cycle (Behavior in Big Sur+; since IOHIDFamily single-user mode patch is applied HID hotplug will no longer work and once the power in USB is cut off while system is in sleep, HID devices like mouse or keyboard will no longer function after wake )
+            
+     - SSDT-USBP: ACPI USB Map for EP45-UD3P. USB Mapping is not necessary on this MB as each USB controllers have less than 15 USB ports. However, one may do so for the following reasons.
+
+       - Name EHCIPorts as PRT(x)
+       - Define internal USB header(UHCIPort@3d10/EHCIPort@fd30) connector type as internal for bluetooth.
+     
+     - SSDT-PTS: Fix for shutdown and system restart on sleep/wake
+
+       *Ensure that the ACPI patch to rename _PTS to ZPTS is applied*
+  
+  Delete:
+
+     - Drop OEM APIC Table (Make sure to add a modified APIC table as a replacement)
+
+  Quirks:
+
+     - FadtEnableReset -> Yes (This is required for restart to function properly)
 
 - Booter
 
-    Quirks: [RebuildAppleMemoryMap](https://dortania.github.io/OpenCore-Install-Guide/config.plist/penryn.html#quirks-2) -> Yes (This quirk is required to boot Tiger ~ Snow Leopard)
+    Quirks:
+    
+     - [RebuildAppleMemoryMap](https://dortania.github.io/OpenCore-Install-Guide/config.plist/penryn.html#quirks-2) -> Yes (This quirk is required to boot Tiger ~ Snow Leopard)
+     - [FixupAppleEfiImages](https://dortania.github.io/OpenCore-Install-Guide/config.plist/penryn.html#quirks-2) -> Yes (For OC 0.9.6+)
 
 - Kernel 
    
@@ -59,7 +116,9 @@ Must install DuetPkg to EFI partition of Installer USB or macOS disk following t
      - [AMFIPass.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/tree/main/payloads/Kexts/Acidanthera) (Allows to apply OCLP root patches without disabling AMFI; [OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher) 0.6.6+ required)
      - [KT5001USBPorts.kext](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/Inateck%20KT5001%20PCIe%20USB%203.0%20Card) (USB port mapping for Inateck KT5001 PCIe USB Expansion Card; supported in Mountain Lion+)
      - AppleMCEReporterDisabler.kext (Required when using iMacPro1,1 SMBIOS to boot Monterey 12.3.0+)
-     - [RestrictEvents.kext](https://github.com/acidanthera/RestrictEvents) (Optional;  can be used to modify CPU processor name in "About This Mac")
+     - [RestrictEvents.kext](https://github.com/acidanthera/RestrictEvents) 
+       - VMM-x86_64(revpatch=sbvmm) spoof to allow install or update macOS using unsupported SMBIOS  
+       - [Modify CPU processor name](https://github.com/AppleBreak1/EP45-UD3P-Customac/blob/main/7.%20Miscellaneous/Misc.md) in "About This Mac"
      - AGPMInjector-GTX770.kext (Apple Graphic PowerManagment for GTX 770 10DE1184; generated using [AGPM Injector](https://github.com/Pavo-IM/AGPMInjector))
      - AGPMInjector 9500GT.kext (Apple Graphic PowerManagment for 9500 GT 10de0640)
      - AGPMInjectorHD2400.kext (Apple Graphic PowerManagment for ATI Radeon HD2400Pro 100294c3)
@@ -119,6 +178,10 @@ Must install DuetPkg to EFI partition of Installer USB or macOS disk following t
      - amfi_get_out_of_my_way=1 (Disables AMFI; disabling Apple Mobile File Integrity is necessary to allow deeper root patches)
         
          Update: This boot flag may not be necessary anymore with the release of [AMFIPass](https://github.com/dortania/OpenCore-Legacy-Patcher/releases/tag/0.6.8).kext
+     
+     - -amfipassbeta or -lilubetaall (Allows loading AMFIPass.kext on unsupported macOS)
+
+     - revpatch=sbvmm (VMM-x86_64 spoof; required for installing or updating macOS when using unsupported SMBIOS)
  
      
 - Drivers:
