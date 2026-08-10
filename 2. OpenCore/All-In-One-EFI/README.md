@@ -96,8 +96,8 @@
 <summary>Sonoma</summary><img width="1121" alt="Screenshot 2023-07-03 at 5 07 19 PM" src="https://github.com/AppleBreak1/EP45-UD3P-Customac/assets/97265013/1b3cefcf-e46c-4f9d-9fe9-1fd92b7f7227">
 </details>  
 <details> 
-<summary>Sequoia</summary>
+<summary>Sequoia</summary><img width="1121" height="696" alt="Sequoia1" src="https://github.com/user-attachments/assets/45de53f5-a857-4752-a022-bf65ef3be809" />
 </details>  
 <details> 
-<summary>Tahoe</summary>
+<summary>Tahoe</summary><img width="1121" height="629" alt="Tahoe1" src="https://github.com/user-attachments/assets/2c20acef-9c1b-4884-85c7-b3b1fa52f579" />
 </details>  
