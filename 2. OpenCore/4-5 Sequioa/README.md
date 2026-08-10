@@ -170,6 +170,10 @@ AirplaytoMac / Universal Control (Requires natively supported WiFi/BT card such 
 
     Note: If for any reason installer did not install Rosetta Cryptex, it can also be done [manually](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/998#issuecomment-1163607808). Extract, rename, copy, and paste os.dmg file to /Volumes/Preboot/UUID/Cryptex1/Current of the target partition.
 
+- AMD Polaris graphics drivers require AVX2.0 in Ventura+ ([OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher)'s Polaris patch is required to bring back old drivers for graphics acceleration)
+
+    Note: To avoid black screen, make sure to boot in VESA mode with -amd_no_dgpu_accel boot-arg in prior to applying Polaris patch.
+  
 - Core2Quad or Core2Duo CPUs that support SSE4.1 require injecting [AAAMouSSE.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/blob/main/payloads/Kexts/SSE/AAAMouSSE-v0.95-Dortania.zip) and [NoAVXFSCompressionTypeZlib-AVXpel.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/commits/67a78ec4a275e0e8f8941a5ff9d64f00c28397dc/payloads/Kexts/Misc/NoAVXFSCompressionTypeZlib-v12.3.1.zip) to avoid kernel panic in Ventura+.
       
 - UHCI/OHCI USB stack is removed from Ventura+. UHCI/OHCI is a USB1.1 controller where the USB keyboard/mouse get attached to for legacy systems. USB keyboard/mouse will not work in Ventura installer if they are plugged into any of the onboard USB ports. To install Ventura+ on this legacy system, use of PS2 keyboard/mouse or USB 2.0 Hub/PCIE USB 3.0 expansion card to force the keyboard/mouse be controlled by EHCI(USB2.0 controller) is required.
@@ -192,7 +196,9 @@ AirplaytoMac / Universal Control (Requires natively supported WiFi/BT card such 
 
 - Beginning with Mojave, SSE4.2 is required. However, this is not supported by Core2Quad or Core2Duo and is prevented from booting Mojave+. To bypass this, use the [telematrap](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707) kext to block com.apple.telemetry.plugin in S/L/UserEventPlugins.
 
+- [MouSSE](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/)(partial SSE4.2 emulator) is required for AMD Polaris GPUs on systems with no SSE4.2 support. 
 
+   Note: The [patched](https://github.com/dortania/OpenCore-Legacy-Patcher/tree/main/payloads/Kexts/SSE) version for Ventura+
  
 # Resources
 - [FakeSMC3 with plugins](https://github.com/CloverHackyColor/FakeSMC3_with_plugins)(FakeSMC sensors provide more readings on this legacy hardware)
