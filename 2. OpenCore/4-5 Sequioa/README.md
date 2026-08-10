@@ -1,4 +1,4 @@
-
+<img width="1765" height="839" alt="Sequoia" src="https://github.com/user-attachments/assets/d971151a-a4db-4cf8-9468-d7a1ebf2f1fb" />
 
 # macOS Sequioa Installer
 
