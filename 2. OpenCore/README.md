@@ -17,6 +17,7 @@
 - [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/4-3%20Ventura) for Ventura
 - [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/4-4%20Sonoma) for Sonoma
 - [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/4-5%20Sequoia) for Sequoia
+- [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/5-1%20Tahoe) for Tahoe
 - [EFI](https://github.com/AppleBreak1/EP45-UD3P-Customac/tree/main/2.%20OpenCore/All-In-One-EFI) All-In-One
 # OpenCore for Legacy BIOS
 Must install DuetPkg to EFI partition of Installer USB or macOS disk following the [guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install.html#legacy-setup)
