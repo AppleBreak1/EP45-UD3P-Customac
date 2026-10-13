@@ -34,9 +34,6 @@ SSD: PNY CS900 250GB (macOS Catalina, Big Sur, Monterey, Ventura, Sonoma, Sequoi
 
 SSD: PNY CS900 250GB (Windows 11)
 
-<img width="600" height="532" alt="EP45-UD3P" src="https://github.com/user-attachments/assets/15ed29cd-40c7-4e0c-8ed2-964887f2de68" />
-
-
 # Working
 
 Native CPU Power Management (AppleLPC, AppleHPET, SpeedStep)
