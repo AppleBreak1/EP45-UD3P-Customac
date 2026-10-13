@@ -1,6 +1,6 @@
 # Introduction
 
-This build is from 2008 that's turned into a Hackintosh since the release of Snow Leopard. I've done some maintenance here and there like the RAMs, Graphics cards, and the SSDs over those years but the system has been rock solid and have become one of my favorite toy. It is still capable of running up to macOS Sequoia thanks to those involved in making this run possible. 
+This build is from 2008 that's turned into a Hackintosh since the release of Snow Leopard. I've done some maintenance here and there upgrading RAMs, Graphics cards, and SSDs over the years but the system has been rock solid and have become one of my favorite toy. It is capable of running every Mac operating system(Tiger~Tahoe) released for Intel-based Macs, thanks to the incredible Hackintosh development communities and OCLP developers that made this run possible. 
 
 <img width="1920" height="1080" alt="Intro" src="https://github.com/user-attachments/assets/b21c542c-4df7-49f5-9bf3-5908be5df3aa" />
 
@@ -33,6 +33,9 @@ SSD: PNY CS900 250GB (macOS Mojave)
 SSD: PNY CS900 250GB (macOS Catalina, Big Sur, Monterey, Ventura, Sonoma, Sequoia, Tahoe)
 
 SSD: PNY CS900 250GB (Windows 11)
+
+<img width="600" height="532" alt="EP45-UD3P" src="https://github.com/user-attachments/assets/15ed29cd-40c7-4e0c-8ed2-964887f2de68" />
+
 
 # Working
 
@@ -118,14 +121,14 @@ Note: Three important settings are AHCI, HPET 64-bit mode, and disabling Quick B
 **Tiger ~ High Sierra:** 
 
 - The system is well supported. (To elaborate, no CPU-ID or SSE emulation required to install Mac OS)
-- Booting Mac OS X Tiger/Leopard/Snow Leopard require RebuildAppleMemoryMap quirk and may require VirtualSMC as a SMC emulator.
+- Booting Mac OS X Tiger/Leopard/Snow Leopard require RebuildAppleMemoryMap quirk and may require VirtualSMC as an SMC emulator.
 - For ICH10 on macOS High Sierra+ may require [patching](https://applelife.ru/threads/ustanovka-macos-high-sierra-10-13-na-intel-pc.2210706/page-712#post-726313) AppleAHCIPort to resolve some hard disks not being recognized in High Sierra+ (Apply on needed basis)
 
 **Mojave ~ Catalina:** 
 
-- Beginning with Mojave, SSE4.2 is required. However, this is not supported by the Intel Core2 family processors and is prevented from booting Mojave+ on non-SSE4.2 system. To bypass this, use [telematrap](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707) kext to block com.apple.telemetry.plugin in S/L/UserEventPlugins.
+- Beginning with Mojave, SSE4.2 is required. However, this is not supported by the Intel Core2 family processors and is prevented from booting Mojave+ on non-SSE4.2 system. To bypass this, inject [telematrap](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707) kext to block com.apple.telemetry.plugin in S/L/UserEventPlugins.
 
-- Apple dropped support for iMac10,1 in macOS Mojave+. For update or installation purpose, use iMacPro1,1 SMBIOS. Once the installation is complete, revert back to iMac10,1 SMBIOS and add boot-arg -no_compat_check.
+- Apple dropped support for iMac10,1 in macOS Mojave+. For an update or installation purpose, use iMacPro1,1 SMBIOS. Once the installation is complete, revert back to iMac10,1 SMBIOS and add boot-arg -no_compat_check.
       
 **Big Sur:**
 
@@ -152,7 +155,7 @@ Note: Three important settings are AHCI, HPET 64-bit mode, and disabling Quick B
 
 - non-SSE4.2 systems with SSE4.1 support require injecting [AAAMouSSE.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/blob/main/payloads/Kexts/SSE/AAAMouSSE-v0.95-Dortania.zip) and [NoAVXFSCompressionTypeZlib-AVXpel.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/commits/67a78ec4a275e0e8f8941a5ff9d64f00c28397dc/payloads/Kexts/Misc/NoAVXFSCompressionTypeZlib-v12.3.1.zip) to avoid kernel panic in Ventura+.
       
-- UHCI/OHCI USB stack is removed from Ventura+. UHCI/OHCI is a USB1.1 controller where the USB keyboard/mouse get attached to for legacy systems. USB keyboard/mouse will not work in Ventura installer if they are plugged into any of the onboard USB ports. To install Ventura+ on this legacy system, use of PS2 keyboard/mouse or USB 2.0 Hub/PCIE USB 3.0 expansion card to force the keyboard/mouse be controlled by EHCI(USB2.0 controller) is required.
+- UHCI/OHCI USB stack is removed from Ventura+. UHCI/OHCI is a USB1.1 controller where USB keyboard/mouse get attached to for legacy systems. USB keyboard/mouse will not work in Ventura installer if they are plugged into any of the onboard USB ports. To install Ventura+ on this legacy system, use of PS2 keyboard/mouse or USB 2.0 Hub/PCIE USB 3.0 expansion card to force the keyboard/mouse be controlled by EHCI(USB2.0 controller) is required.
 
   Once the Ventura installation is complete, UHCI can be patched to work via [OCLP](https://github.com/dortania/OpenCore-Legacy-Patcher) along with injection of [AppleUSBUHCI.kext and AppleUSBUHCIPCI.kext](https://github.com/dortania/OpenCore-Legacy-Patcher/blob/main/payloads/Kexts/USB/USB1.1-Injector-v1.0.0.zip).    
 
@@ -170,7 +173,9 @@ Note: Three important settings are AHCI, HPET 64-bit mode, and disabling Quick B
 
 **Tahoe**
 
-- While macOS Tahoe can be installed on this system, it is unusable without graphics acceleration and no graphics patches have been released for macOS Tahoe as of yet. For more details about changes in macOS Tahoe, please refer to [here](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/1167)
+- Apple removed AppleHDA.kext and FireWire(IEEE 1394) stack from macOS Tahoe. (To get audio working, you may install VoodooHDA, HDAUniversal or install AppleHDA.kext from the first Tahoe beta via root patching)
+  
+- Booting later versions of macOS Tahoe may require adding [-nomt_core](https://github.com/dortania/OpenCore-Legacy-Patcher/commit/7007536) boot-argument to avoid getting stuck on EXITBS:START
 
 # Misc
 
