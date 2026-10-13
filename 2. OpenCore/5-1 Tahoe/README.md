@@ -1,3 +1,5 @@
+<img width="1920" height="1080" alt="Tahoe" src="https://github.com/user-attachments/assets/9f0483d9-abda-4ae3-8bfb-902d28c6f4bf" />
+
 # macOS Tahoe Installer
 
   - macOS Tahoe 26.7.1 (25G241)
